@@ -4,7 +4,7 @@ import praw
 
 reddit = praw.Reddit('bot')
 
-submission = reddit.submission(url='https://www.reddit.com/r/csci040/comments/dw53wt/political_discussion_thread/%27')
+submission = reddit.submission(url='https://www.reddit.com/r/csci040/comments/dw53wt/political_discussion_thread/')
 submission.comments.replace_more(limit=None)
 num_del_comments = 0
 a_comments_top = {}
@@ -40,7 +40,7 @@ for c in submission.comments:
     if type(c) is praw.models.reddit.comment.Comment:
         if c.author is None:
             pass
-        elif c.author in a_comments_top: 
+        elif c.author in a_comments_total: 
             a_comments_total[c.author] += 1 
         else:
             a_comments_total[c.author] = 1
