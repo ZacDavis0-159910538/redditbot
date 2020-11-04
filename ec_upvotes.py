@@ -23,7 +23,7 @@ print('Task 2 exception found')
     print('done sleeping')
 '''
 a = 0
-for i in range(10):
+for i in range(30):
     a += 1
     upvoted_comments = []
     upvoted_submissions = []
