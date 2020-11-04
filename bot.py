@@ -1,4 +1,5 @@
 import praw
+import prawcore
 import random
 import datetime
 import time
@@ -103,6 +104,7 @@ reddit = praw.Reddit('bot')
 # connect to the debate thread
 #reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jhb20w/2020_debate_thread/'
 reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jj7fo1/hello_debate_test_hello/'
+#reddit_debate_url = 'https://www.reddit.com/r/csci040temp/comments/jnndas/an_armed_man_is_arrested_outside_a_north_carolina/'
 submission = reddit.submission(url=reddit_debate_url)
 
 # each iteration of this loop will post a single comment;
@@ -116,11 +118,12 @@ submission = reddit.submission(url=reddit_debate_url)
 # you can change this while loop to an if statement to make the code run only once
 
 #while True:
-#for i in range(2):
-while True:
+for i in range(1000):
+#if True:
+#while True:
     # printing the current time will help make the output messages more informative
     # since things on reddit vary with time
-    print()
+    print(i)
     print('new iteration at:',datetime.datetime.now())
     print('submission.title=',submission.title)
     print('submission.url=',submission.url)
@@ -186,6 +189,7 @@ while True:
         # use the generate_comment() function to create the text,
         # and the .reply() function to post it to reddit
         text = generate_comment() 
+        
         try: 
             submission.reply(text)
             print('Task 2 submission success')
@@ -204,23 +208,26 @@ while True:
         # and then an if statement checks whether the comment is authored by you or not
         comments_without_replies = []
         for c in not_my_comments:
-            for c.reply in not_my_comments:
-                if str(c.author) == 'jfqt1':
+            me = False
+            for reply in not_my_comments:
+                if str(reply.author) == 'jfqt1':
                     me = True
                     #not_my_comments.remove(c)
-                else:
-                    me = False
             #if me == True:
                 #not_my_comments.remove(c)
             if me == False:
                 comments_without_replies.append(c)
             #else:
                 #comments_without_replies.append(c)
-    
+        #comments_without_replies.comment_sort = "top"
+        print(comments_without_replies)
+        #comments_without_replies = sorted(comments_without_replies, key = praw.models.reddit.comment.Comment.score)
+        #needs attributes of comments_without_replies, in comments under praw
+        #key refers to elements of the list which in this case is comments
     # HINT:
     # this is the most difficult of the tasks,
     # and so you will have to be careful to check that this code is in fact working correctly
-    print('len(comments_without_replies)=',len(comments_without_replies))
+        print('len(comments_without_replies)=',len(comments_without_replies))
 
     # FIXME (task 4): randomly select a comment from the comments_without_replies list,
     # and reply to that comment
@@ -228,8 +235,17 @@ while True:
     # HINT:
     # use the generate_comment() function to create the text,
     # and the .reply() function to post it to reddit
-    op = reddit.comment(random.choice(comments_without_replies))
+    #op = reddit.comment(random.choice(comments_without_replies))
+    op = reddit.comment(comments_without_replies)
     text = generate_comment() 
+    print('task 4 random reply')
+    #from prawcore.exceptions import Forbidden
+    if op.is_submitter == True:
+        op.reply('Hi op, Thanks for posting this thread.' + text)
+    else:
+        op.reply(text)
+    
+    '''
     try: 
         print('task 4 random reply')
         op.reply(text)
@@ -239,7 +255,7 @@ while True:
         print('starting to sleep')
         time.sleep(5)
         print('done sleeping')
-    
+    '''
     # FIXME (task 5): select a new submission for the next iteration;
     # your newly selected submission should have a 50% chance of being the original submission
     # (url in the reddit_debate_url variable)
@@ -257,27 +273,30 @@ while True:
         print('Task 5 Top')
         for c in reddit.subreddit('csci040temp').top(time_filter='month'):
             topc.append(c)
-        rtopc = random.choice(topc)
-        newsub = reddit.submission(id=rtopc)
-        print('sub id =', rtopc)
-        t = (rtopc.title)
+        #rtopc = random.choice(topc)
+        submission = random.choice(topc)
+        print('submission =', submission)
+        t = (submission.title)
         print('title=', t)
-        try: 
-            print('Task 5 submission reply attempt')
-            newsub.reply('I agree '+ t)
-            submission.reply(t)
-            print('Task 5 submission reply success')
-        except:
-            print('Task 5 Top exception found')
-            print('starting to sleep')
-            time.sleep(5)
-            print('done sleeping')
+        #try: 
+            #print('Task 5 submission reply attempt')
+            #newsub.reply('I agree '+ t)
+            #submission.reply('I agree' + t)
+            #print('Task 5 submission reply success')
+        #except:
+            #print('Task 5 Top exception found')
+            #print('starting to sleep')
+            #time.sleep(5)
+            #print('done sleeping')
     else:
         print('Task 5 Original')
-        text = generate_comment() 
-        try: submission.reply(text)
+        #text = generate_comment() 
+        submission = reddit.submission(url=reddit_debate_url)
+        '''
+        try:
         except:
             print('Task 5 Original exception found')
             print('starting to sleep')
             time.sleep(5)
             print('done sleeping')
+        '''
