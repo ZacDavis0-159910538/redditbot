@@ -21,9 +21,10 @@ bot_counter.py:
 +2 upvotes comments, upvotes submissions     
 +2 Have your bot post new submissions to the /r/csci040 subreddit from other subreddits     
 +2 created and used 10 bots for upvoting      
++2 30 bots
 Suggested custom ec:     
 +2 downvote comments, downvote submissions see ec_downvotes.py      
 +1 special string "Hi op, thanks for posting this thread." given in response to op's comments. See bot.py task 4.  
 +2 report comments, report submissions see ec_reports.py    
-= 30/20 Total  
+= 32/20 Total  
 
