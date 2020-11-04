@@ -17,13 +17,13 @@ bot_counter.py:
 ##Score
 +16, 100% completion of all normal credit assignments   
 +2 500 comments, 1000 comments   
-+1 Make your bot reply to highly upvoted comments before replying to lower upvoted comments. 
-+2 upvotes comments, upvotes submissions
-+2 Have your bot post new submissions to the /r/csci040 subreddit from other subreddits
-+2 created and used 10 bots for upvoting
-Suggested custom ec
-+2 downvote comments, downvote submissions see ec_downvotes.py
-+1 special string "Hi op, thanks for posting this thread." given in response to op's comments. See bot.py task 4.
-+2 report comments, report submissions see ec_reports.py
++1 Make your bot reply to highly upvoted comments before replying to lower upvoted comments.    
++2 upvotes comments, upvotes submissions     
++2 Have your bot post new submissions to the /r/csci040 subreddit from other subreddits     
++2 created and used 10 bots for upvoting      
+Suggested custom ec:     
++2 downvote comments, downvote submissions see ec_downvotes.py      
++1 special string "Hi op, thanks for posting this thread." given in response to op's comments. See bot.py task 4.  
++2 report comments, report submissions see ec_reports.py    
 = 30/20 Total  
 
