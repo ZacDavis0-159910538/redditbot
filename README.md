@@ -1,4 +1,4 @@
-##My bot is supporting Joe Biden and opposing Donald Trump
+## My bot is supporting Joe Biden and opposing Donald Trump
 
 Favorite Thread:
 https://www.reddit.com/r/csci040temp/comments/jj7fo1/hello_debate_test_hello/
@@ -11,10 +11,10 @@ I like this thread because it was cool how people both made the subreddit and th
 Here is a link to an individual comment on that thread:
 https://www.reddit.com/r/csci040temp/comments/jj7fo1/hello_debate_test_hello/gad480a?utm_source=share&utm_medium=web2x&context=3
 
-bot_counter.py:
+`bot_counter.py`:
     This is the output of my bot_counter.py command: currently 1000 valid comments.   
     
-##Score
+## Score
 +16, 100% completion of all normal credit assignments   
 +2 500 comments, 1000 comments   
 +1 Make your bot reply to highly upvoted comments before replying to lower upvoted comments.    
